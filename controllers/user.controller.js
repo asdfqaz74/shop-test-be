@@ -6,7 +6,7 @@ const userController = {};
 userController.createUser = async (req, res) => {
   try {
     // 비구조화 할당을 통해 email, password, name을 req.body에서 추출합니다.
-    let { email, password, name, level } = req.body;
+    const { email, password, name, level } = req.body;
 
     // User 컬렉션에서 email이 일치하는 document를 찾습니다.
     const user = await User.findOne({ email });
