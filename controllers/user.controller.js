@@ -39,4 +39,21 @@ userController.createUser = async (req, res) => {
   }
 };
 
+userController.getUser = async (req, res) => {
+  try {
+    const { userId } = req;
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(400).json({ error: "유저를 찾을 수 없습니다." });
+    }
+    return res.status(200).json({ status: "success", user });
+  } catch (e) {
+    if (!res.headersSent) {
+      res
+        .status(500)
+        .json({ status: "error", error: e.message || "서버 오류" });
+    }
+  }
+};
+
 module.exports = userController;

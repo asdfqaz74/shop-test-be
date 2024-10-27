@@ -12,7 +12,7 @@ const productSchema = new Schema(
       required: true,
     },
     image: {
-      typs: String,
+      type: String,
       required: true,
     },
     category: {
@@ -51,6 +51,6 @@ productSchema.methods.toJSON = function () {
   return obj;
 };
 
-const Product = mongoose.model("Product", userSchema);
+const Product = mongoose.model("Product", productSchema);
 
 module.exports = Product;
